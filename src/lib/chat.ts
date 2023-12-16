@@ -10,7 +10,13 @@ const handleSocketConnections = () => {
   chrono.onMessage(async (client, data) => {
     const { message, sender, receiver, room } = data;
     const chat = await Chat.create({ message, sender, receiver, room });
-    chrono.sendMessage(client, "message", chat.toJSON(), false, room);
+    chrono.sendMessage(
+      client,
+      "message",
+      { ...chat.toJSON(), room },
+      true,
+      room
+    );
     await Room.findByIdAndUpdate(room, { lastMessage: message });
   });
 };

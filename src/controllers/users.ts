@@ -42,8 +42,9 @@ export const authenticate = async (req: Request, res: Response) => {
 };
 
 export const allUsers = async (req: Request, res: Response) => {
+  const { except } = req.query;
   try {
-    const users = await User.find({}).sort("username");
+    const users = await User.find({ _id: { $ne: except } }).sort("username");
     res.json(users);
   } catch ({ message }) {
     log(message, "error");

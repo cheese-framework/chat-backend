@@ -14,7 +14,7 @@ import handleSocketConnections from "./lib/chat";
 
 const app = express();
 
-export const chrono = new ChronoSocket({ app, logging: false });
+export const chrono = new ChronoSocket({ app, logging: true });
 
 const { server } = chrono;
 

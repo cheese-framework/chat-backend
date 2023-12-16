@@ -2,7 +2,8 @@ import mongoose, { Schema } from "mongoose";
 
 const roomSchema = new Schema(
   {
-    name: String,
+    sender: { id: String, name: String },
+    receiver: { id: String, name: String },
     createdBy: String,
     lastMessage: String,
     recipients: Array<String>,

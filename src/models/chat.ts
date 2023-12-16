@@ -2,10 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const chatSchema = new Schema(
   {
-    room: {
-      id: String,
-      name: String,
-    },
+    room: String,
     sender: {
       id: String,
       username: String,
